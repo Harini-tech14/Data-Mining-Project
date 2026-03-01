@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Path Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🎯</span>
+                <h1>Career Path Recommender</h1>
+            </div>
+            <p class="tagline">Discover your ideal career based on your unique skills and interests</p>
+        </header>
+
+        <main class="main-content">
+            <div class="progress-bar">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <span>Skills</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <span>Interests</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <span>Background</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <span>Preferences</span>
+                </div>
+            </div>
+
+            <form id="career-form">
+                <!-- Step 1: Skills -->
+                <div class="form-step active" data-step="1">
+                    <h2>What are your skills?</h2>
+                    <p class="step-description">Select all the skills you have or are developing. These help us match you with suitable careers.</p>
+                    
+                    <div class="skills-container" id="skills-container">
+                        <!-- Skills will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Step 2: Interests -->
+                <div class="form-step" data-step="2">
+                    <h2>What are your interests?</h2>
+                    <p class="step-description">Choose areas that genuinely excite you. Your passions are key to finding fulfilling work.</p>
+                    
+                    <div class="interests-container" id="interests-container">
+                        <!-- Interests will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Background -->
+                <div class="form-step" data-step="3">
+                    <h2>Tell us about your background</h2>
+                    <p class="step-description">Your education and experience help us recommend appropriate career levels.</p>
+                    
+                    <div class="form-group">
+                        <label for="education">Highest Education Level</label>
+                        <select id="education" name="education" required>
+                            <option value="">Select your education level</option>
+                            <option value="high_school">High School Diploma</option>
+                            <option value="vocational">Vocational/Trade Certificate</option>
+                            <option value="certification">Professional Certification</option>
+                            <option value="associates">Associate's Degree</option>
+                            <option value="bachelors">Bachelor's Degree</option>
+                            <option value="masters">Master's Degree</option>
+                            <option value="doctorate">Doctorate (PhD, MD, JD, etc.)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Years of Work Experience</label>
+                        <input type="number" id="experience" name="experience" min="0" max="50" value="0" required>
+                        <span class="input-hint">Include internships and part-time work</span>
+                    </div>
+                </div>
+
+                <!-- Step 4: Preferences -->
+                <div class="form-step" data-step="4">
+                    <h2>What are your work preferences?</h2>
+                    <p class="step-description">Help us understand your ideal work environment and expectations.</p>
+                    
+                    <div class="form-group">
+                        <label>Preferred Industries (select up to 5)</label>
+                        <div class="industries-container" id="industries-container">
+                            <!-- Industries will be loaded dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="work-style">Preferred Work Style</label>
+                        <select id="work-style" name="work-style" required>
+                            <option value="hybrid">Hybrid (Mix of office and remote)</option>
+                            <option value="remote">Fully Remote</option>
+                            <option value="onsite">On-site/In-person</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salary">Salary Expectations</label>
+                        <select id="salary" name="salary" required>
+                            <option value="low">Entry Level ($30k - $50k)</option>
+                            <option value="medium" selected>Mid Level ($50k - $100k)</option>
+                            <option value="high">Senior Level ($100k+)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" id="prev-btn" disabled>
+                        <span class="btn-icon">←</span> Previous
+                    </button>
+                    <button type="button" class="btn btn-primary" id="next-btn">
+                        Next <span class="btn-icon">→</span>
+                    </button>
+                    <button type="submit" class="btn btn-success" id="submit-btn" style="display: none;">
+                        Get My Recommendations <span class="btn-icon">🚀</span>
+                    </button>
+                </div>
+            </form>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your profile and finding the best career matches...</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>AI Career Path Recommender &copy; 2024</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

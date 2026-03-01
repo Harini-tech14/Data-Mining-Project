@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Career Recommendations - AI Career Path Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🎯</span>
+                <h1>Career Path Recommender</h1>
+            </div>
+            <a href="/" class="btn btn-secondary btn-small">Start Over</a>
+        </header>
+
+        <main class="main-content results-page">
+            <div class="results-header">
+                <h2>Your Personalized Career Recommendations</h2>
+                <p>Based on your skills, interests, and preferences, here are the careers that best match your profile.</p>
+            </div>
+
+            <div id="results-container" class="results-container">
+                <!-- Results will be loaded dynamically -->
+            </div>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Loading your personalized recommendations...</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>AI Career Path Recommender &copy; 2024</p>
+        </footer>
+    </div>
+
+    <!-- Career Detail Modal -->
+    <div id="career-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div id="modal-body">
+                <!-- Career details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/results.js') }}"></script>
+</body>
+</html>
